@@ -11,7 +11,7 @@ import {
 } from "react-i18next";
 import resourcesToBackend from "i18next-resources-to-backend";
 import LanguageDetector from "i18next-browser-languagedetector";
-import { getOptions, languages, cookieName } from "./settings";
+import { getOptions, languages } from "./settings";
 
 const runsOnServerSide = typeof window === "undefined";
 

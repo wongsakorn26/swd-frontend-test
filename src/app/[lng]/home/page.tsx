@@ -1,13 +1,13 @@
-"use client";
+"use client"
 
-import Link from "next/link";
-import { useTranslation } from "@/app/i18n/client";
-import { Card, Row, Col } from "antd";
-import "./home-page.scss";
+import Link from "next/link"
+import { useTranslation } from "@/app/i18n/client"
+import { Card, Row, Col } from "antd"
+import "./home-page.scss"
 
 export default function Homepage({ params }: { params: { lng: string } }) {
-  const { lng } = params;
-  const { t } = useTranslation(lng);
+  const { lng } = params
+  const { t } = useTranslation(lng)
 
   return (
     <Row gutter={16} justify={"center"}>
@@ -26,5 +26,5 @@ export default function Homepage({ params }: { params: { lng: string } }) {
         </Link>
       </Col>
     </Row>
-  );
+  )
 }

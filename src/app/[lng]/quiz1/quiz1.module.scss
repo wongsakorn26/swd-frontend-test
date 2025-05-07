@@ -1,91 +1,154 @@
-.container{
-        width: 150px;
-        text-align: center;
-        padding: 16px;
-        line-height: 100%;
-        background-color: white;
-        border-radius: 12px;
-        margin: 5px;
-        cursor: pointer;
-        caret-color: transparent;
-}
-.container:hover {
-    background-color: #FFA200;
+.container {
+  width: 150px;
+  height: 150px;
+  text-align: center;
+  padding: 16px;
+  line-height: 100%;
+  background-color: white;
+  border-radius: 12px;
+  margin: 5px;
+  cursor: pointer;
+  caret-color: transparent;
+  display: flex;
+  align-items: center;
 }
 
-.groupContainer{
-    width: 350px;
-    text-align: center;
-    padding: 16px;
-    line-height: 100%;
-    background-color: #FFF;
-    border-radius: 12px;
-    margin: 5px;
-    cursor: pointer;
-    caret-color: transparent;
+.chipRight {
+  width: 80px;
+  display: inline-block;
+  background-color: #a6e22e;
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+  text-align: center;
+  margin-top: 65px;
+  margin-left: 10px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+}
+
+.chipCenter {
+  width: 80px;
+  padding: 4px 10px;
+  background-color: #a6e22e;
+  color: #fff;
+  border-radius: 999px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 500;
+  position: absolute;
+  top: 275px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+}
+
+.chipLeft {
+  width: 80px;
+  display: inline-block;
+  background-color: #a6e22e;
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+  text-align: center;
+  margin-top: 65px;
+  margin-left: -120px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+}
+
+.container:hover {
+  background-color: #ffa200;
+}
+
+.groupContainer {
+  width: 350px;
+  height: 150px;
+  text-align: center;
+  padding: 16px;
+  line-height: 100%;
+  background-color: #fff;
+  border-radius: 12px;
+  margin: 5px;
+  cursor: pointer;
+  caret-color: transparent;
 }
 
 .groupContainer:hover {
-    background-color: #FFA200;
+  background-color: #ffa200;
 }
 
 .square {
-    background-color: #555;
+  width: 150px;
+  height: 100px;
+  background-color: #555;
 }
 
 .circle {
-    background-color: #555;
-    border-radius: 50%;
+  width: 150px;
+  height: 100px;
+  background-color: #555;
+  border-radius: 50%;
 }
 
 .oval {
-    background-color: #555;
-    border-radius: 50%;
-    width: 120px;
-    height: 70px;
+  background-color: #555;
+  border-radius: 50%;
+  width: 120px;
+  height: 70px;
+}
+
+.trapezoid {
+  border-bottom: 50px solid #555;
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  height: 0;
+  width: 125px;
 }
 
 .rectangle {
-    background-color: #555;
-    height: 60px;
-    width: 120px;
+  background-color: #555;
+  height: 100px;
+  width: 120px;
 }
 
 .parallelogram {
-    width: 120px;
-    height: 60px;
-    background: #555;
-    transform: skew(20deg);
+  width: 120px;
+  height: 60px;
+  background: #555;
+  transform: skew(20deg);
 }
 
 .triangle_up {
-    width: 0;
-    height: 0;
-    border-left: 60px solid transparent;
-    border-right: 60px solid transparent;
-    border-bottom: 120px solid #555;
+  width: 0;
+  height: 0;
+  border-left: 60px solid transparent;
+  border-right: 60px solid transparent;
+  border-bottom: 120px solid #555;
 }
 
 .triangle_down {
-    width: 0;
-    height: 0;
-    border-left: 60px solid transparent;
-    border-right: 60px solid transparent;
-    border-top: 120px solid #555;
+  width: 0;
+  height: 0;
+  border-left: 60px solid transparent;
+  border-right: 60px solid transparent;
+  border-top: 120px solid #555;
 }
 
 .triangle_left {
-    width: 0;
-    height: 0;
-    border-top: 60px solid transparent;
-    border-right: 120px solid #555;
-    border-bottom: 60px solid transparent;
+  width: 0;
+  height: 0;
+  border-top: 60px solid transparent;
+  border-right: 120px solid #555;
+  border-bottom: 60px solid transparent;
 }
 
 .triangle_right {
-    width: 0;
-    height: 0;
-    border-top: 60px solid transparent;
-    border-left: 120px solid #555;
-    border-bottom: 60px solid transparent;
+  width: 0;
+  height: 0;
+  border-top: 60px solid transparent;
+  border-left: 120px solid #555;
+  border-bottom: 60px solid transparent;
 }
