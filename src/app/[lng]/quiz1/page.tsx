@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useTranslation } from "@/app/i18n/client";
 import { Row, Col, Button, Typography } from "antd";
 
-import "./quiz1.scss";
+import styles from "./quiz1.module.scss";
 
 export default function Quiz1({ params }: { params: { lng: string } }) {
   const { lng } = params;
@@ -24,8 +24,33 @@ export default function Quiz1({ params }: { params: { lng: string } }) {
         </Col>
       </Row>
 
-      <Row justify="center" className="home-page-container">
-        <Col>quiz1</Col>
+      <Row justify="center">
+        <Col
+          className={styles.container}
+          onClick={() => {
+            console.log("move Left");
+          }}
+        >
+          <Col className={styles.triangle_left} />
+        </Col>
+        <Row
+          justify="space-between"
+          className={styles.groupContainer}
+          onClick={() => {
+            console.log("move Position");
+          }}
+        >
+          <div className={styles.triangle_up} />
+          <div className={styles.triangle_down} />
+        </Row>
+        <Col
+          className={styles.container}
+          onClick={() => {
+            console.log("move Right");
+          }}
+        >
+          <Col className={styles.triangle_right} />
+        </Col>
       </Row>
     </>
   );
