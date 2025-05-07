@@ -15,7 +15,6 @@ import { getOptions, languages } from "./settings";
 
 const runsOnServerSide = typeof window === "undefined";
 
-// on client side the normal singleton is ok
 i18next
     .use(initReactI18next)
     .use(LanguageDetector)
@@ -25,10 +24,9 @@ i18next
                 import(`./locales/${language}/${namespace}.json`)
         )
     )
-    // .use(LocizeBackend) // locize backend could be used on client side, but prefer to keep it in sync with server side
     .init({
         ...getOptions(),
-        lng: undefined, // let detect the language on client side
+        lng: undefined, // detect language on client side
         detection: {
             order: ["path", "htmlTag", "cookie", "navigator"],
         },
@@ -46,25 +44,24 @@ export function useTranslation<
     const ret = useTranslationOrg(ns, options);
     const { i18n } = ret;
 
+    // This hook will always run, but only do something on the client
+    const [activeLng, setActiveLng] = useState(i18n.resolvedLanguage);
+
+    useEffect(() => {
+        if (activeLng !== i18n.resolvedLanguage) {
+            setActiveLng(i18n.resolvedLanguage);
+        }
+    }, [activeLng, i18n.resolvedLanguage]);
+
+    useEffect(() => {
+        if (!runsOnServerSide && lng && i18n.resolvedLanguage !== lng) {
+            i18n.changeLanguage(lng);
+        }
+    }, [lng, i18n]);
+
+    // Server-side synchronous language change
     if (runsOnServerSide && lng && i18n.resolvedLanguage !== lng) {
         i18n.changeLanguage(lng);
-    } else {
-        // eslint-disable-next-line react-hooks/rules-of-hooks
-        const [activeLng, setActiveLng] = useState(i18n.resolvedLanguage);
-        // eslint-disable-next-line react-hooks/rules-of-hooks
-
-        useEffect(() => {
-            if (activeLng === i18n.resolvedLanguage) return;
-            setActiveLng(i18n.resolvedLanguage);
-        }, [activeLng, i18n.resolvedLanguage]);
-
-        // eslint-disable-next-line react-hooks/rules-of-hooks
-        useEffect(() => {
-            if (!lng || i18n.resolvedLanguage === lng) return;
-            i18n.changeLanguage(lng);
-        }, [lng, i18n]);
-
-
     }
 
     return ret;

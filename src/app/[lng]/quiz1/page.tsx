@@ -54,7 +54,7 @@ export default function Quiz1({ params }: { params: { lng: string } }) {
 
         <Col>
           <Link href={`/${lng}/home`}>
-            <Button type="primary">{t("Home")}</Button>
+            <Button type="primary">{t("home")}</Button>
           </Link>
         </Col>
       </Row>

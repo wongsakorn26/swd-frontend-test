@@ -1,14 +1,14 @@
-"use client";
+"use client"
 
-import Link from "next/link";
-import { useTranslation } from "@/app/i18n/client";
-import { Row, Col, Button, Typography } from "antd";
+import Link from "next/link"
+import { useTranslation } from "@/app/i18n/client"
+import { Row, Col, Button, Typography } from "antd"
 
-import "./quiz2.scss";
+import "./quiz2.scss"
 
 export default function Quiz2({ params }: { params: { lng: string } }) {
-  const { lng } = params;
-  const { t } = useTranslation(lng);
+  const { lng } = params
+  const { t } = useTranslation(lng)
 
   return (
     <>
@@ -19,7 +19,7 @@ export default function Quiz2({ params }: { params: { lng: string } }) {
 
         <Col>
           <Link href={`/${lng}/home`}>
-            <Button type="primary">{t("Home")}</Button>
+            <Button type="primary">{t("home")}</Button>
           </Link>
         </Col>
       </Row>
@@ -28,5 +28,5 @@ export default function Quiz2({ params }: { params: { lng: string } }) {
         <Col>quiz2</Col>
       </Row>
     </>
-  );
+  )
 }
