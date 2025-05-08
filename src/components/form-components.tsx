@@ -39,6 +39,9 @@ export default function FormComponent({ params, formData, onSubmit }: Props) {
     console.log("Failed:", errorInfo)
   }
 
+  const handleReset = () => {
+    form.resetFields()
+  }
   const prefixSelector = (
     <Form.Item
       name="prefix"
@@ -51,9 +54,9 @@ export default function FormComponent({ params, formData, onSubmit }: Props) {
       ]}
     >
       <Select className="select-prefix">
-        <Option value="66">+66</Option>
-        <Option value="1">+1</Option>
-        <Option value="33">+33</Option>
+        <Option value="+66">+66</Option>
+        <Option value="+1">+1</Option>
+        <Option value="+33">+33</Option>
       </Select>
     </Form.Item>
   )
@@ -239,16 +242,12 @@ export default function FormComponent({ params, formData, onSubmit }: Props) {
           </Col>
           <Col xs={24} md={4} sm={4}>
             <Form.Item label={null}>
-              <Button type="primary" htmlType="submit">
-                {t("reset")}
-              </Button>
+              <Button onClick={handleReset}>{t("reset")}</Button>
             </Form.Item>
           </Col>
           <Col xs={24} md={4} sm={4}>
             <Form.Item label={null}>
-              <Button type="primary" htmlType="submit">
-                {t("submit")}
-              </Button>
+              <Button htmlType="submit">{t("submit")}</Button>
             </Form.Item>
           </Col>
         </Row>

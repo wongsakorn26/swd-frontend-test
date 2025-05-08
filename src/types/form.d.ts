@@ -9,7 +9,7 @@ export type FormInput = {
     passportNo: string
     expectedSalary: string
     citizenId: string
-
+    prefix: string
     p1: string
     p2: string
     p3: string
@@ -20,12 +20,3 @@ export type FormInput = {
 export type userFormProps = Omit<FormInput, 'p1' | 'p2' | 'p3' | 'p4' | 'p5'> & {
     citizenId: string
 }
-
-export type UserTableProps = {
-    firstName: string
-    lastName: string
-    gender: string
-    mobilePhone: string
-    nationality: string
-}
-

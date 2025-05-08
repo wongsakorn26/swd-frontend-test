@@ -3,7 +3,7 @@
   "home": "หน้าแรก",
   "gotoProfile": "ไปที่หน้าโปรไฟล์",
   "hello": "สวัสดี",
-  "formManangement": "การจัดการฟอร์ม",
+  "formManagement": "การจัดการฟอร์ม",
   "test1": "แบบทดสอบที่ 1",
   "moveShape": "เลื่อนรูปแบบ",
   "movePosition": "เปลี่ยนตําแหน่ง",
@@ -37,5 +37,12 @@
   },
   "delete": "ลบ",
   "selectAll": "เลือกทั้งหมด",
-  "edit": "แก้ไข"
+  "edit": "แก้ไข",
+  "table": {
+    "name": "ชื่อ",
+    "gender": "เพศ",
+    "mobilePhone": "หมายเลขเบอร์โทรศัพท์มือถือ",
+    "nationality": "สัญชาติ",
+    "manage": "จัดการ"
+  }
 }

@@ -3,7 +3,7 @@
   "home": "Home",
   "gotoProfile": "Go to Profile Page",
   "hello": "Hello",
-  "formManangement": "Form & Table",
+  "formManagement": "Form & Table",
   "test1": "Test 1",
   "moveShape": "Move Shape",
   "movePosition": "Move Position",
@@ -25,17 +25,24 @@
   "phonePrefix": "Phone Prefix",
   "passportNo": "Passport No",
   "expectedSalary": "Expected Salary",
-  "submit": "Submit",
+  "submit": "SUBMIT",
   "dateFormat": "MM/DD/YYYY",
   "thai": "Thai",
   "french": "French",
   "american": "American",
-  "reset": "Reset",
+  "reset": "RESET",
   "pleaseSelect": "-- Please Select --",
   "errorMessage": {
     "required": "This field is required {{name}}"
   },
   "delete": "Delete",
   "selectAll": "Select All",
-  "edit": "Edit"
+  "edit": "Edit",
+  "table": {
+    "name": "Name",
+    "gender": "Gender",
+    "mobilePhone": "Mobile Phone",
+    "nationality": "Nationality",
+    "manage": "MANAGE"
+  }
 }

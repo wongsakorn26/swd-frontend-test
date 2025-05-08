@@ -2,7 +2,16 @@
 
 import { useTranslation } from "@/app/i18n/client"
 import { useState } from "react"
-import { Table, Button, Space, Row, Col, Typography, TableProps } from "antd"
+import {
+  Table,
+  Button,
+  Space,
+  Row,
+  Col,
+  Typography,
+  TableProps,
+  Checkbox,
+} from "antd"
 import { useSelector, useDispatch } from "react-redux"
 import { RootState } from "@/redux/store"
 import { addForm, updateForm } from "@/redux/formSlice"
@@ -25,34 +34,35 @@ export default function Quiz2({ params }: { params: { lng: string } }) {
       .forEach((key) => dispatch(deleteForm(Number(key))))
     setSelectedRowKeys([])
   }
+  const handleDeleteRow = (index: number) => {
+    dispatch(deleteForm(index))
+    setSelectedRowKeys((prev) => prev.filter((key) => Number(key) !== index))
+  }
 
   const columns: TableProps<userFormProps & { key: number }>["columns"] = [
     {
-      title: "Name",
+      title: t("table.name"),
       render: (record: userFormProps) =>
         `${record.firstName} ${record.lastName}`,
     },
     {
-      title: "Gender",
-      dataIndex: "gender",
+      title: t("table.gender"),
+      render: (record: userFormProps) => t(`${record.gender}`),
     },
     {
-      title: "Phone",
-      dataIndex: "mobilePhone",
+      title: t("table.mobilePhone"),
+      render: (record: userFormProps) =>
+        `${record.prefix}${record.mobilePhone.slice(1)}`,
     },
     {
-      title: "Nationality",
-      dataIndex: "nationality",
+      title: t("table.nationality"),
+      render: (record: userFormProps) => t(`${record.nationality}`),
     },
     {
-      title: "Action",
+      title: t("table.manage"),
       render: (_: unknown, record: userFormProps, index: number) => (
         <Space>
-          <Button
-            onClick={() => {
-              handleDelete()
-            }}
-          >
+          <Button danger onClick={() => handleDeleteRow(index)}>
             {t("delete")}
           </Button>
 
@@ -96,7 +106,7 @@ export default function Quiz2({ params }: { params: { lng: string } }) {
     <>
       <Row justify="space-between" align="middle" style={{ width: "100%" }}>
         <Col>
-          <Typography.Title level={1}>{t("formManangement")}</Typography.Title>
+          <Typography.Title level={1}>{t("formManagement")}</Typography.Title>
         </Col>
         <Col>
           <Link href={`/${lng}/home`}>
@@ -105,7 +115,7 @@ export default function Quiz2({ params }: { params: { lng: string } }) {
         </Col>
       </Row>
 
-      <div
+      <Row
         style={{
           display: "flex",
           flexDirection: "column",
@@ -118,24 +128,36 @@ export default function Quiz2({ params }: { params: { lng: string } }) {
           formData={editIndex !== null ? formList[editIndex] : undefined}
           onSubmit={handleSubmit}
         />
-        <Table<userFormProps & { key: number }>
-          rowSelection={rowSelection}
-          columns={columns}
-          dataSource={dataSource}
-          pagination={{ pageSize: 2, position: ["topRight"] }}
-          title={() => (
-            <div style={{ display: "flex", justifyContent: "space-between" }}>
-              <Button
-                danger
-                disabled={!selectedRowKeys.length}
-                onClick={handleDelete}
-              >
-                {t("delete")}
-              </Button>
-            </div>
-          )}
-        />
-      </div>
+        <Col style={{ width: "100%", maxWidth: "1000px" }}>
+          <Table<userFormProps & { key: number }>
+            rowSelection={rowSelection}
+            columns={columns}
+            dataSource={dataSource}
+            pagination={{ pageSize: 2, position: ["topRight"] }}
+            title={() => (
+              <Row align="middle" style={{ width: "100%" }}>
+                <Col span={4}>
+                  <Checkbox
+                    checked={
+                      selectedRowKeys.length > 0 &&
+                      selectedRowKeys.length === dataSource.length
+                    }
+                    onChange={handleSelectAllChange}
+                  >
+                    {t("selectAll")}
+                  </Checkbox>
+                </Col>
+
+                <Col span={4}>
+                  <Button danger onClick={handleDelete}>
+                    {t("delete")}
+                  </Button>
+                </Col>
+              </Row>
+            )}
+          />
+        </Col>
+      </Row>
     </>
   )
 }
