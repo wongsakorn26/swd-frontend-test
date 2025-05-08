@@ -16,15 +16,14 @@ export default function RootLayout({
   }
 }) {
   return (
-    <html
-      lang={lng}
-      dir={dir(lng)}
-      style={{
-        height: "100%",
-        background: "-webkit-linear-gradient(45deg, #6EDA78 , #FFA200)",
-      }}
-    >
-      <body>
+    <html lang={lng} dir={dir(lng)}>
+      <body
+        style={{
+          background: "linear-gradient(45deg, #6EDA78, #FFA200)",
+          backgroundAttachment: "fixed",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
         <SelectLangButton currentLang={lng} />
         {children}
       </body>

@@ -1,7 +1,17 @@
 "use client"
 
 import { useTranslation } from "@/app/i18n/client"
-import { Row, Col, Button, Select, Form, Input, DatePicker, Radio } from "antd"
+import {
+  Row,
+  Col,
+  Button,
+  Select,
+  Form,
+  Input,
+  DatePicker,
+  Radio,
+  InputNumber,
+} from "antd"
 import type { FormProps } from "antd"
 import { FormInput, userFormProps } from "@/types/form"
 import "./form.scss"
@@ -246,14 +256,18 @@ export default function FormComponent({ params, formData, onSubmit }: Props) {
               rules={[
                 {
                   required: true,
-                  pattern: /^0[0-9]{9}$/,
+                  pattern: /[0-9]{9}$/,
                   message: t("errorMessage.invalid", {
                     name: t("mobilePhone"),
                   }),
                 },
               ]}
             >
-              <Input addonBefore={prefixSelector} style={{ width: "100%" }} />
+              <Input
+                addonBefore={prefixSelector}
+                maxLength={10}
+                style={{ width: "100%" }}
+              />
             </Form.Item>
           </Col>
           <Col span={16}>
@@ -275,7 +289,7 @@ export default function FormComponent({ params, formData, onSubmit }: Props) {
                 },
               ]}
             >
-              <Input />
+              <InputNumber style={{ width: "100%" }} />
             </Form.Item>
           </Col>
           <Col xs={24} md={4} sm={4}>

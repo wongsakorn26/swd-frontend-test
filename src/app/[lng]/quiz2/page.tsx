@@ -140,7 +140,7 @@ export default function Quiz2({ params }: { params: { lng: string } }) {
               rowSelection={rowSelection}
               columns={columns}
               dataSource={dataSource}
-              pagination={{ pageSize: 2, position: ["topRight"] }}
+              pagination={{ pageSize: 3, position: ["topRight"] }}
               title={() => (
                 <Row align="middle" style={{ width: "100%" }}>
                   <Col span={4}>
