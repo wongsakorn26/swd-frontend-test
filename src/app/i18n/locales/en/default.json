@@ -34,5 +34,7 @@
   "pleaseSelect": "-- Please Select --",
   "errorMessage": {
     "required": "This field is required {{name}}"
-  }
+  },
+  "delete": "Delete",
+  "selectAll": "Select All"
 }

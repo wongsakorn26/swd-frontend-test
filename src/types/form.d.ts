@@ -15,3 +15,16 @@ export type userFormProps = {
     citizenIdP4: string
     citizenIdP5: string
 }
+
+export type userData = {
+    title: string
+    firstName: string
+    lastName: string
+    birthDay: string
+    nationality: string
+    citizenId: string
+    gender: string
+    mobilePhone: string
+    passportNo: string
+    expectedSalary: string
+}

@@ -1,0 +1,40 @@
+.form-container {
+  border: 2px solid #555;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.citizen-wrapper {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 4px;
+}
+.citizen-input {
+  width: 50px;
+  text-align: center;
+  border-radius: 6px;
+  padding: 4px 6px;
+}
+
+.citizen-input.long {
+  width: 80px;
+}
+
+.hyphen {
+  margin: 0 4px;
+  font-size: 18px;
+  color: #555;
+}
+
+.select-prefix {
+  height: 30px;
+  width: 70px;
+  background-color: #fff;
+  border-radius: 5px;
+  border: 1px solid #d9d9d9;
+  &:hover {
+    border-color: #1890ff;
+    box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+  }
+}

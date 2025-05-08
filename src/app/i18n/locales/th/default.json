@@ -34,5 +34,7 @@
   "pleaseSelect": "-- กรุณาเลือก --",
   "errorMessage": {
     "required": "กรุณากรอกข้อมูล {{name}}"
-  }
+  },
+  "delete": "ลบ",
+  "selectAll": "เลือกทั้งหมด"
 }
