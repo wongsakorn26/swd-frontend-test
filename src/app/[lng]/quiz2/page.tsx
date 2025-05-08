@@ -1,7 +1,7 @@
 "use client"
 
 import { useTranslation } from "@/app/i18n/client"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import {
   Table,
   Button,
@@ -28,13 +28,17 @@ export default function Quiz2({ params }: { params: { lng: string } }) {
   const formList = useSelector((state: RootState) => state.form)
   const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([])
   const [editIndex, setEditIndex] = useState<number | null>(null)
+  const [isClient, setIsClient] = useState(false)
+
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
 
   const handleDelete = () => {
-    ;[...selectedRowKeys]
-      .sort((a, b) => Number(b) - Number(a))
-      .forEach((key) => dispatch(deleteForm(Number(key))))
+    selectedRowKeys.forEach((key) => dispatch(deleteForm(Number(key))))
     setSelectedRowKeys([])
   }
+
   const handleDeleteRow = (index: number) => {
     dispatch(deleteForm(index))
     setSelectedRowKeys((prev) => prev.filter((key) => Number(key) !== index))
@@ -130,33 +134,35 @@ export default function Quiz2({ params }: { params: { lng: string } }) {
           onSubmit={handleSubmit}
         />
         <Col style={{ width: "100%", maxWidth: "1000px" }}>
-          <Table<userFormProps & { key: number }>
-            rowSelection={rowSelection}
-            columns={columns}
-            dataSource={dataSource}
-            pagination={{ pageSize: 2, position: ["topRight"] }}
-            title={() => (
-              <Row align="middle" style={{ width: "100%" }}>
-                <Col span={4}>
-                  <Checkbox
-                    checked={
-                      selectedRowKeys.length > 0 &&
-                      selectedRowKeys.length === dataSource.length
-                    }
-                    onChange={handleSelectAllChange}
-                  >
-                    {t("selectAll")}
-                  </Checkbox>
-                </Col>
+          {isClient && (
+            <Table<userFormProps & { key: number }>
+              rowSelection={rowSelection}
+              columns={columns}
+              dataSource={dataSource}
+              pagination={{ pageSize: 2, position: ["topRight"] }}
+              title={() => (
+                <Row align="middle" style={{ width: "100%" }}>
+                  <Col span={4}>
+                    <Checkbox
+                      checked={
+                        selectedRowKeys.length > 0 &&
+                        selectedRowKeys.length === dataSource.length
+                      }
+                      onChange={handleSelectAllChange}
+                    >
+                      {t("selectAll")}
+                    </Checkbox>
+                  </Col>
 
-                <Col span={4}>
-                  <Button danger onClick={handleDelete}>
-                    {t("delete")}
-                  </Button>
-                </Col>
-              </Row>
-            )}
-          />
+                  <Col span={4}>
+                    <Button danger onClick={handleDelete}>
+                      {t("delete")}
+                    </Button>
+                  </Col>
+                </Row>
+              )}
+            />
+          )}
         </Col>
       </Row>
     </>

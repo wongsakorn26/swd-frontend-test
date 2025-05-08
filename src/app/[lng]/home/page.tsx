@@ -3,7 +3,6 @@
 import Link from "next/link"
 import { useTranslation } from "@/app/i18n/client"
 import { Card, Row, Col } from "antd"
-import "./home-page.scss"
 
 export default function Homepage({ params }: { params: { lng: string } }) {
   const { lng } = params
