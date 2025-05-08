@@ -112,7 +112,9 @@ export default function Quiz2({ params }: { params: { lng: string } }) {
     <>
       <Row justify="space-between" align="middle" style={{ width: "100%" }}>
         <Col>
-          <Typography.Title level={1}>{t("formManagement")}</Typography.Title>
+          <Typography.Title level={1} style={{ caretColor: "transparent" }}>
+            {t("formManagement")}
+          </Typography.Title>
         </Col>
         <Col>
           <Link href={`/${lng}/home`}>

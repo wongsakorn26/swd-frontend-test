@@ -51,7 +51,9 @@ export default function Quiz1({ params }: { params: { lng: string } }) {
     <>
       <Row justify="space-between" align="middle" style={{ width: "100%" }}>
         <Col>
-          <Typography.Title level={1}>{t("layoutStyle")}</Typography.Title>
+          <Typography.Title level={1} style={{ caretColor: "transparent" }}>
+            {t("layoutStyle")}
+          </Typography.Title>
         </Col>
 
         <Col>

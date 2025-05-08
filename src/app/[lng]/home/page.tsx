@@ -13,14 +13,14 @@ export default function Homepage({ params }: { params: { lng: string } }) {
       <Col span={8}>
         <Link href={`/${lng}/quiz1`}>
           <Card title={t("test1")} variant="borderless">
-            <h4>{t("layoutStyle")}</h4>
+            <h4 style={{ caretColor: "transparent" }}>{t("layoutStyle")}</h4>
           </Card>
         </Link>
       </Col>
       <Col span={8}>
         <Link href={`/${lng}/quiz2`}>
           <Card title={t("test2")} variant="borderless">
-            <h4>{t("layoutStyle")}</h4>
+            <h4 style={{ caretColor: "transparent" }}>{t("formManagement")}</h4>
           </Card>
         </Link>
       </Col>
