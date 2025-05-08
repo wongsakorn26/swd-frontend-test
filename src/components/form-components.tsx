@@ -7,6 +7,7 @@ import { FormInput, userFormProps } from "@/types/form"
 import "./form.scss"
 import { useEffect } from "react"
 import dayjs from "dayjs"
+import Image from "next/image"
 
 type Props = {
   params: { lng: string }
@@ -56,7 +57,7 @@ export default function FormComponent({ params, formData, onSubmit }: Props) {
     >
       <Select className="select-prefix">
         <Option value="+66">
-          <img
+          <Image
             src="/icons/th-flag.png"
             alt="TH"
             width={20}
@@ -66,7 +67,7 @@ export default function FormComponent({ params, formData, onSubmit }: Props) {
           +66
         </Option>
         <Option value="+1">
-          <img
+          <Image
             src="/icons/us-flag.png"
             alt="TH"
             width={20}
@@ -76,7 +77,7 @@ export default function FormComponent({ params, formData, onSubmit }: Props) {
           +1
         </Option>
         <Option value="+33">
-          <img
+          <Image
             src="/icons/fr-flag.png"
             alt="TH"
             width={20}
