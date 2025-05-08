@@ -3,30 +3,37 @@
 import { useTranslation } from "@/app/i18n/client"
 import { Row, Col, Button, Select, Form, Input, DatePicker, Radio } from "antd"
 import type { FormProps } from "antd"
-import { userData, userFormProps } from "@/types/form"
+import { FormInput, userFormProps } from "@/types/form"
 import "./form.scss"
+import { useEffect } from "react"
+import dayjs from "dayjs"
+
 type Props = {
-  formData?: userData
-  setFormData: React.Dispatch<React.SetStateAction<userData | undefined>>
   params: { lng: string }
+  formData?: userFormProps
+  onSubmit: (values: userFormProps) => void
 }
-export default function FormComponent({
-  formData,
-  setFormData,
-  params,
-}: Props) {
+export default function FormComponent({ params, formData, onSubmit }: Props) {
   const { lng } = params
   const { t } = useTranslation(lng)
   const { Option } = Select
+  const [form] = Form.useForm()
 
-  const onFinish: FormProps<userFormProps>["onFinish"] = (values) => {
-    const { citizenIdP1, citizenIdP2, citizenIdP3, citizenIdP4, citizenIdP5 } =
-      values
-    const fullID = `${citizenIdP1}-${citizenIdP2}-${citizenIdP3}-${citizenIdP4}-${citizenIdP5}`
-    const formData = { ...values, fullID }
-    console.log("Success:", formData)
+  useEffect(() => {
+    if (formData) {
+      form.setFieldsValue({
+        ...formData,
+        birthDay: formData.birthDay ? dayjs(formData.birthDay) : undefined,
+      })
+    }
+  }, [formData, form])
+
+  const handleFinish = (values: FormInput) => {
+    onSubmit(values)
+    form.resetFields()
   }
-  const onFinishFailed: FormProps<userFormProps>["onFinishFailed"] = (
+
+  const onFinishFailed: FormProps<FormInput>["onFinishFailed"] = (
     errorInfo
   ) => {
     console.log("Failed:", errorInfo)
@@ -55,8 +62,8 @@ export default function FormComponent({
     <>
       <Form
         className="form-container"
-        initialValues={formData}
-        onFinish={onFinish}
+        form={form}
+        onFinish={handleFinish}
         onFinishFailed={onFinishFailed}
         autoComplete="off"
         style={{ width: "50%" }}

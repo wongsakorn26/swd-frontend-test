@@ -36,5 +36,6 @@
     "required": "This field is required {{name}}"
   },
   "delete": "Delete",
-  "selectAll": "Select All"
+  "selectAll": "Select All",
+  "edit": "Edit"
 }

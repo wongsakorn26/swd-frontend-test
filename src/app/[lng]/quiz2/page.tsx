@@ -1,41 +1,141 @@
 "use client"
 
-import Link from "next/link"
 import { useTranslation } from "@/app/i18n/client"
-import { Row, Col, Button, Typography } from "antd"
 import { useState } from "react"
-import { userData } from "@/types/form"
+import { Table, Button, Space, Row, Col, Typography, TableProps } from "antd"
+import { useSelector, useDispatch } from "react-redux"
+import { RootState } from "@/redux/store"
+import { addForm, updateForm } from "@/redux/formSlice"
+import { userFormProps } from "@/types/form"
 import FormComponent from "@/components/form-components"
-import TableComponents from "@/components/table-components"
+import Link from "next/link"
+import { deleteForm } from "@/redux/formSlice"
 
 export default function Quiz2({ params }: { params: { lng: string } }) {
   const { lng } = params
   const { t } = useTranslation(lng)
-  const [formData, setFormData] = useState<userData>()
+  const dispatch = useDispatch()
+  const formList = useSelector((state: RootState) => state.form)
+  const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([])
+  const [editIndex, setEditIndex] = useState<number | null>(null)
+
+  const handleDelete = () => {
+    ;[...selectedRowKeys]
+      .sort((a, b) => Number(b) - Number(a))
+      .forEach((key) => dispatch(deleteForm(Number(key))))
+    setSelectedRowKeys([])
+  }
+
+  const columns: TableProps<userFormProps & { key: number }>["columns"] = [
+    {
+      title: "Name",
+      render: (record: userFormProps) =>
+        `${record.firstName} ${record.lastName}`,
+    },
+    {
+      title: "Gender",
+      dataIndex: "gender",
+    },
+    {
+      title: "Phone",
+      dataIndex: "mobilePhone",
+    },
+    {
+      title: "Nationality",
+      dataIndex: "nationality",
+    },
+    {
+      title: "Action",
+      render: (_: unknown, record: userFormProps, index: number) => (
+        <Space>
+          <Button
+            onClick={() => {
+              handleDelete()
+            }}
+          >
+            {t("delete")}
+          </Button>
+
+          <Button onClick={() => setEditIndex(index)}>{t("edit")}</Button>
+        </Space>
+      ),
+    },
+  ]
+
+  const handleSubmit = (values: userFormProps) => {
+    if (editIndex !== null) {
+      dispatch(updateForm({ index: editIndex, updated: values }))
+    } else {
+      dispatch(addForm(values))
+    }
+    setEditIndex(null)
+  }
+
+  const dataSource = formList.map((item, i) => ({
+    ...item,
+    key: i,
+  }))
+
+  const handleSelectAllChange = (e: any) => {
+    if (e.target.checked) {
+      const allKeys = dataSource.map((item) => item.key)
+      setSelectedRowKeys(allKeys)
+    } else {
+      setSelectedRowKeys([])
+    }
+  }
+
+  const rowSelection = {
+    selectedRowKeys,
+    onChange: (newSelectedRowKeys: React.Key[]) => {
+      setSelectedRowKeys(newSelectedRowKeys)
+    },
+  }
+
   return (
     <>
       <Row justify="space-between" align="middle" style={{ width: "100%" }}>
         <Col>
           <Typography.Title level={1}>{t("formManangement")}</Typography.Title>
         </Col>
-
         <Col>
           <Link href={`/${lng}/home`}>
             <Button type="primary">{t("home")}</Button>
           </Link>
         </Col>
       </Row>
-      <Row
-        justify="center"
-        style={{ flexDirection: "column", alignItems: "center" }}
+
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: "2rem",
+        }}
       >
         <FormComponent
-          formData={formData}
-          setFormData={setFormData}
           params={{ lng }}
+          formData={editIndex !== null ? formList[editIndex] : undefined}
+          onSubmit={handleSubmit}
         />
-        <TableComponents />
-      </Row>
+        <Table<userFormProps & { key: number }>
+          rowSelection={rowSelection}
+          columns={columns}
+          dataSource={dataSource}
+          pagination={{ pageSize: 2, position: ["topRight"] }}
+          title={() => (
+            <div style={{ display: "flex", justifyContent: "space-between" }}>
+              <Button
+                danger
+                disabled={!selectedRowKeys.length}
+                onClick={handleDelete}
+              >
+                {t("delete")}
+              </Button>
+            </div>
+          )}
+        />
+      </div>
     </>
   )
 }
