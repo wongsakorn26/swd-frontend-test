@@ -45,5 +45,6 @@
     "nationality": "Nationality",
     "manage": "MANAGE"
   },
-  "saveSuccess": "Save Success"
+  "saveSuccess": "Save Success",
+  "deleteSuccess": "Delete Success"
 }

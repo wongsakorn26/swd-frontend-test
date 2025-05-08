@@ -30,8 +30,15 @@ export default function FormComponent({ params, formData, onSubmit }: Props) {
   }, [formData, form])
 
   const handleFinish = (values: FormInput) => {
+    const cleanedValues = {
+      ...values,
+      birthDay: dayjs.isDayjs(values.birthDay)
+        ? values.birthDay.format("YYYY-MM-DD")
+        : values.birthDay ?? null,
+    }
+
     alert(t("saveSuccess"))
-    onSubmit(values)
+    onSubmit(cleanedValues)
     form.resetFields()
   }
 

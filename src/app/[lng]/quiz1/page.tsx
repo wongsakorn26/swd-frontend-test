@@ -9,6 +9,7 @@ import styles from "./quiz1.module.scss"
 export default function Quiz1({ params }: { params: { lng: string } }) {
   const { lng } = params
   const { t } = useTranslation(lng)
+  const [half, setHalf] = useState(false)
   const shapeNames = [
     "square",
     "circle",
@@ -39,6 +40,7 @@ export default function Quiz1({ params }: { params: { lng: string } }) {
     const firstHalf = selectedShape.slice(0, half)
     const secondHalf = selectedShape.slice(half)
     setSelectedShape([...secondHalf, ...firstHalf])
+    setHalf((prev) => !prev)
   }
 
   const handleRandomMove = () => {
@@ -93,7 +95,7 @@ export default function Quiz1({ params }: { params: { lng: string } }) {
         </Col>
       </Row>
       <Divider />
-      <Row justify="center">
+      <Row justify={"center"} style={{ marginLeft: half ? "100px" : "-100px" }}>
         {...selectedShape.slice(0, 3).map((item, index) => (
           <Col
             key={index}
@@ -106,8 +108,8 @@ export default function Quiz1({ params }: { params: { lng: string } }) {
           </Col>
         ))}
       </Row>
-      <Row justify="center">
-        {...selectedShape.slice(3, 7).map((item, index) => (
+      <Row justify={"center"} style={{ marginLeft: half ? "-100px" : "100px" }}>
+        {...selectedShape.slice(3, 6).map((item, index) => (
           <Col
             key={index}
             className={styles.container}

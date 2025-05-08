@@ -45,5 +45,6 @@
     "nationality": "สัญชาติ",
     "manage": "จัดการ"
   },
-  "saveSuccess": "บันทึกข้อมูลสําเร็จ"
+  "saveSuccess": "บันทึกข้อมูลสําเร็จ",
+  "deleteSuccess": "ลบข้อมูลสําเร็จ"
 }

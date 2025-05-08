@@ -42,6 +42,7 @@ export default function Quiz2({ params }: { params: { lng: string } }) {
   const handleDeleteRow = (index: number) => {
     dispatch(deleteForm(index))
     setSelectedRowKeys((prev) => prev.filter((key) => Number(key) !== index))
+    alert(t("deleteSuccess"))
   }
 
   const columns: TableProps<userFormProps & { key: number }>["columns"] = [
