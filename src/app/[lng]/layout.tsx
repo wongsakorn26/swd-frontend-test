@@ -1,19 +1,19 @@
-import { dir } from "i18next";
-import { languages } from "@/app/i18n/settings";
-import SelectLangButton from "@/components/select-lang-button";
+import { dir } from "i18next"
+import { languages } from "@/app/i18n/settings"
+import SelectLangButton from "@/components/select-lang-button"
 
 export async function generateStaticParams() {
-  return languages.map((lng) => ({ lng }));
+  return languages.map((lng) => ({ lng }))
 }
 
 export default function RootLayout({
   children,
   params: { lng },
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
   params: {
-    lng: string;
-  };
+    lng: string
+  }
 }) {
   return (
     <html
@@ -25,11 +25,9 @@ export default function RootLayout({
       }}
     >
       <body>
-        <div>
-          <SelectLangButton currentLang={lng} />
-        </div>
-        <div>{children}</div>
+        <SelectLangButton currentLang={lng} />
+        {children}
       </body>
     </html>
-  );
+  )
 }

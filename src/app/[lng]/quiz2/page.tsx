@@ -11,6 +11,7 @@ import {
   Typography,
   TableProps,
   Checkbox,
+  CheckboxChangeEvent,
 } from "antd"
 import { useSelector, useDispatch } from "react-redux"
 import { RootState } from "@/redux/store"
@@ -86,7 +87,7 @@ export default function Quiz2({ params }: { params: { lng: string } }) {
     key: i,
   }))
 
-  const handleSelectAllChange = (e: any) => {
+  const handleSelectAllChange = (e: CheckboxChangeEvent) => {
     if (e.target.checked) {
       const allKeys = dataSource.map((item) => item.key)
       setSelectedRowKeys(allKeys)
