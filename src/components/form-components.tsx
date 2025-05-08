@@ -207,7 +207,7 @@ export default function FormComponent({ params, formData, onSubmit }: Props) {
           <Col xs={24}>
             <Form.Item<userFormProps> label={t("citizenId")}>
               <Form.Item name="p1" noStyle>
-                <Input maxLength={1} className="citizen-input" />
+                <Input maxLength={1} className="citizen-input short" />
               </Form.Item>
               <span className="hyphen">-</span>
 
@@ -222,12 +222,12 @@ export default function FormComponent({ params, formData, onSubmit }: Props) {
               <span className="hyphen">-</span>
 
               <Form.Item name="p4" noStyle>
-                <Input maxLength={2} className="citizen-input" />
+                <Input maxLength={2} className="citizen-input short" />
               </Form.Item>
               <span className="hyphen">-</span>
 
               <Form.Item name="p5" noStyle>
-                <Input maxLength={1} className="citizen-input" />
+                <Input maxLength={1} className="citizen-input short" />
               </Form.Item>
             </Form.Item>
           </Col>

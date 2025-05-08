@@ -4,17 +4,15 @@
   padding: 20px;
 }
 
-.citizen-wrapper {
-  display: flex;
-  align-items: center;
-  flex-wrap: nowrap;
-  gap: 4px;
-}
 .citizen-input {
-  width: 50px;
+  width: 30px;
   text-align: center;
   border-radius: 6px;
   padding: 4px 6px;
+}
+
+.citizen-input.short {
+  width: 50px;
 }
 
 .citizen-input.long {
