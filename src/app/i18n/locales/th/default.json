@@ -33,7 +33,7 @@
   "reset": "ล้างข้อมูล",
   "pleaseSelect": "-- กรุณาเลือก --",
   "errorMessage": {
-    "required": "กรุณากรอกข้อมูล {{name}}"
+    "invalid": "ข้อมูลไม่ถูกต้อง {{name}}"
   },
   "delete": "ลบ",
   "selectAll": "เลือกทั้งหมด",
@@ -44,5 +44,6 @@
     "mobilePhone": "หมายเลขเบอร์โทรศัพท์มือถือ",
     "nationality": "สัญชาติ",
     "manage": "จัดการ"
-  }
+  },
+  "saveSuccess": "บันทึกข้อมูลสําเร็จ"
 }

@@ -33,7 +33,7 @@
   "reset": "RESET",
   "pleaseSelect": "-- Please Select --",
   "errorMessage": {
-    "required": "This field is required {{name}}"
+    "invalid": "This field is invalid {{name}}"
   },
   "delete": "Delete",
   "selectAll": "Select All",
@@ -44,5 +44,6 @@
     "mobilePhone": "Mobile Phone",
     "nationality": "Nationality",
     "manage": "MANAGE"
-  }
+  },
+  "saveSuccess": "Save Success"
 }

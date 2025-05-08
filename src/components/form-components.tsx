@@ -29,6 +29,7 @@ export default function FormComponent({ params, formData, onSubmit }: Props) {
   }, [formData, form])
 
   const handleFinish = (values: FormInput) => {
+    alert(t("saveSuccess"))
     onSubmit(values)
     form.resetFields()
   }
@@ -49,14 +50,41 @@ export default function FormComponent({ params, formData, onSubmit }: Props) {
       rules={[
         {
           required: true,
-          message: t("errorMessage.required", { name: t("phonePrefix") }),
+          message: t("errorMessage.invalid", { name: t("phonePrefix") }),
         },
       ]}
     >
       <Select className="select-prefix">
-        <Option value="+66">+66</Option>
-        <Option value="+1">+1</Option>
-        <Option value="+33">+33</Option>
+        <Option value="+66">
+          <img
+            src="/icons/th-flag.png"
+            alt="TH"
+            width={20}
+            height={15}
+            style={{ marginRight: 8 }}
+          />
+          +66
+        </Option>
+        <Option value="+1">
+          <img
+            src="/icons/us-flag.png"
+            alt="TH"
+            width={20}
+            height={15}
+            style={{ marginRight: 8 }}
+          />
+          +1
+        </Option>
+        <Option value="+33">
+          <img
+            src="/icons/fr-flag.png"
+            alt="TH"
+            width={20}
+            height={15}
+            style={{ marginRight: 8 }}
+          />
+          +33
+        </Option>
       </Select>
     </Form.Item>
   )
@@ -79,7 +107,7 @@ export default function FormComponent({ params, formData, onSubmit }: Props) {
               rules={[
                 {
                   required: true,
-                  message: t("errorMessage.required", { name: t("title") }),
+                  message: t("errorMessage.invalid", { name: t("title") }),
                 },
               ]}
             >
@@ -97,7 +125,7 @@ export default function FormComponent({ params, formData, onSubmit }: Props) {
               rules={[
                 {
                   required: true,
-                  message: t("errorMessage.required", {
+                  message: t("errorMessage.invalid", {
                     name: t("firstName"),
                   }),
                 },
@@ -113,7 +141,7 @@ export default function FormComponent({ params, formData, onSubmit }: Props) {
               rules={[
                 {
                   required: true,
-                  message: t("errorMessage.required", {
+                  message: t("errorMessage.invalid", {
                     name: t("lastName"),
                   }),
                 },
@@ -129,7 +157,7 @@ export default function FormComponent({ params, formData, onSubmit }: Props) {
               rules={[
                 {
                   required: true,
-                  message: t("errorMessage.required", {
+                  message: t("errorMessage.invalid", {
                     name: t("birthDay"),
                   }),
                 },
@@ -145,7 +173,7 @@ export default function FormComponent({ params, formData, onSubmit }: Props) {
               rules={[
                 {
                   required: true,
-                  message: t("errorMessage.required", {
+                  message: t("errorMessage.invalid", {
                     name: t("nationality"),
                   }),
                 },
@@ -192,7 +220,7 @@ export default function FormComponent({ params, formData, onSubmit }: Props) {
               rules={[
                 {
                   required: true,
-                  message: t("errorMessage.required", { name: t("gender") }),
+                  message: t("errorMessage.invalid", { name: t("gender") }),
                 },
               ]}
             >
@@ -210,7 +238,8 @@ export default function FormComponent({ params, formData, onSubmit }: Props) {
               rules={[
                 {
                   required: true,
-                  message: t("errorMessage.required", {
+                  pattern: /^0[0-9]{9}$/,
+                  message: t("errorMessage.invalid", {
                     name: t("mobilePhone"),
                   }),
                 },
@@ -231,7 +260,8 @@ export default function FormComponent({ params, formData, onSubmit }: Props) {
               rules={[
                 {
                   required: true,
-                  message: t("errorMessage.required", {
+                  pattern: /[0-9]/,
+                  message: t("errorMessage.invalid", {
                     name: t("expectedSalary"),
                   }),
                 },
